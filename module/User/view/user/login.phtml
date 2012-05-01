@@ -1,0 +1,8 @@
+<?php
+	$title = 'Enter site';
+	$this->headTitle($title);
+?>
+	<h1><?php echo $this->escape($title); ?></h1>
+	<?php
+		$form->setView($this);
+		echo $form;?>		

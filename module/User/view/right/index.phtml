@@ -1,0 +1,54 @@
+<?php
+	$title = 'My rights';
+	$this->headTitle($title);
+	?>
+	<h1><?php echo $this->escape($title); ?></h1>
+	<p><a href="<?php echo $this->url('default', array('controller'=>'right',
+	'action'=>'add'));?>">Add new right</a></p>
+	<table class="table">
+		<tr>
+			<th>Unlocked</th>
+			<th>Right1</th>
+			<th>Right2</th>
+			<th>&nbsp;</th>
+		</tr>
+		<?php foreach($this->rights as $right) : ?>
+				<tr>
+					<td><?php  
+						if ($this->escape($right->unlocked) == 1){						
+							echo "<input type='checkbox' disabled='disabled' checked='true'>";
+							}
+						else{
+							echo "<input type='checkbox' disabled='disabled'>";
+							}
+						?>
+					</td>
+					<td><?php  
+						if ($this->escape($right->right1) == 1){						
+							echo "<input type='checkbox' disabled='disabled' checked='true'>";
+							}
+						else{
+							echo "<input type='checkbox' disabled='disabled'>";
+							}
+						?>
+					</td>
+					<td><?php  
+						if ($this->escape($right->right2) == 1){						
+							echo "<input type='checkbox' disabled='disabled' checked='true'>";
+							}
+						else{
+							echo "<input type='checkbox' disabled='disabled'>";
+							}
+						?>
+					</td>
+					<td>
+						<a href="<?php echo $this->url('default',
+						array('controller'=>'right','action'=>'edit'))
+						. '?id=' . $right->id ;?>">Edit</a>
+						<a href="<?php echo $this->url('default',
+						array('controller'=>'right','action'=>'delete'))
+						. '?id=' . $right->id ;?>">Delete</a>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+	</table>
